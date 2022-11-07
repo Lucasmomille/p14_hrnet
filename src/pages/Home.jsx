@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 import Form from '../components/Form/Form'
 
 function Home() {
@@ -8,7 +9,7 @@ function Home() {
     		<h1>HRnet</h1>
       	</div>
 		<div class="container">
-			<a href="employee-list.html">View Current Employees</a>
+			<NavLink to="employee">View Current Employees</NavLink>
             <h2>Create Employee</h2>
 			<Form></Form>
 		</div>
