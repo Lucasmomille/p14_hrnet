@@ -1,20 +1,24 @@
-import React, { lazy, Suspense } from 'react';
+import React, { lazy, Suspense, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import EmployeesContext from './context/employees';
 
 const Home = lazy(() => import('./pages/Home'));
 const CurrentEmployee = lazy(() => import('./pages/CurrentEmployee'))
 
 
 function App() {
+	const [employees, setEmployees] = useState();
 	return (
-		<Router >
-			<Suspense fallback={<p>Loading...</p>}>
-			<Routes>
-				<Route path="/" element={<Home/>} />
-				<Route path="/employee" element={<CurrentEmployee/>} />
-			</Routes>
-			</Suspense>
-		</Router>
+		<EmployeesContext.Provider value={{ employees, setEmployees }}>
+			<Router >
+				<Suspense fallback={<p>Loading...</p>}>
+				<Routes>
+					<Route path="/" element={<Home/>} />
+					<Route path="/employee" element={<CurrentEmployee/>} />
+				</Routes>
+				</Suspense>
+			</Router>
+		</EmployeesContext.Provider>
 	);
 }
 
