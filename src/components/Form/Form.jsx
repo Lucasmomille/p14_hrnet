@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { states } from '../../data/states'
+import EmployeesContext from '../../context/employees';
 
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
@@ -11,7 +12,7 @@ const SelectForm = ({ values, callback }) => {
     return (
         <Box sx={{ minWidth: 120 }}>
         <FormControl fullWidth>
-          <InputLabel id="demo-simple-select-label">State</InputLabel>
+          <InputLabel>State</InputLabel>
           <Select
             label="state"
             defaultValue=""
@@ -39,6 +40,8 @@ function Form() {
     const [zipCode, setZipCode] = useState("");
     const [state, setState] = useState("");
 
+    const { employees, setEmployees } = useContext(EmployeesContext);
+
     const employee = {
         firstName: firstName,
         lastName: lastName,
@@ -61,7 +64,10 @@ function Form() {
     const saveEmployee = (e) => {
         e.preventDefault();
         console.log('form', employee)
+        setEmployees([...employees, employee])
+        console.log('employees', employees)
     }
+    
     return (
         <>
             <form id="create-employee">

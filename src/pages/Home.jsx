@@ -1,8 +1,10 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import { NavLink } from 'react-router-dom'
 import Form from '../components/Form/Form'
-
+import EmployeesContext from '../context/employees';
 function Home() {
+    const { employees, setEmployees } = useContext(EmployeesContext);
+    console.log('home', employees)
   return (
     <>
       	<div className="title">

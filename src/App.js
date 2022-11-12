@@ -1,4 +1,4 @@
-import React, { lazy, Suspense, useState } from 'react';
+import React, { lazy, Suspense, useState, useContext, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import EmployeesContext from './context/employees';
 
@@ -7,9 +7,10 @@ const CurrentEmployee = lazy(() => import('./pages/CurrentEmployee'))
 
 
 function App() {
-	const [employees, setEmployees] = useState();
+	const [employees, setEmployees] = useState([]);
+	
 	return (
-		<EmployeesContext.Provider value={{ employees, setEmployees }}>
+		<EmployeesContext.Provider value={{employees, setEmployees}}>
 			<Router >
 				<Suspense fallback={<p>Loading...</p>}>
 				<Routes>
