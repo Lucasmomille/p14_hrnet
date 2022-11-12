@@ -35,3 +35,8 @@ label {
 .address {
   margin-top: 10px;
 }
+
+.modal {
+  border: 1px solid black;
+  padding: 1rem;
+}

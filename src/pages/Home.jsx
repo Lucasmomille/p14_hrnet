@@ -2,8 +2,9 @@ import React, {useContext} from 'react'
 import { NavLink } from 'react-router-dom'
 import Form from '../components/Form/Form'
 import EmployeesContext from '../context/employees';
+
 function Home() {
-    const { employees, setEmployees } = useContext(EmployeesContext);
+    const { employees } = useContext(EmployeesContext);
     console.log('home', employees)
   return (
     <>
@@ -15,7 +16,6 @@ function Home() {
             <h2>Create Employee</h2>
 			<Form></Form>
 		</div>
-		<div id="confirmation" className="modal">Employee Created!</div>
     </>
   )
 }

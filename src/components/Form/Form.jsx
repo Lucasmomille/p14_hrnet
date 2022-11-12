@@ -28,6 +28,13 @@ const SelectForm = ({ values, callback }) => {
       </Box>
     );
 }
+const Modal = ({ setIsOpen }) => {
+    return (
+      <>
+        <div id="confirmation" className="modal" onClick={() => setIsOpen(false)}>Employee Created!</div>
+      </>
+    );
+  };
 
 function Form() {
     const [firstName, setFirstName] = useState("");
@@ -39,6 +46,7 @@ function Form() {
     const [city, setCity] = useState("");
     const [zipCode, setZipCode] = useState("");
     const [state, setState] = useState("");
+    const [isOpen, setIsOpen] = useState(false);
 
     const { employees, setEmployees } = useContext(EmployeesContext);
 
@@ -65,6 +73,7 @@ function Form() {
         e.preventDefault();
         console.log('form', employee)
         setEmployees([...employees, employee])
+        setIsOpen(true)
         console.log('employees', employees)
     }
     
@@ -77,10 +86,10 @@ function Form() {
                 <input type="text" id="last-name" value={lastName} onChange={(e) => setLastName(e.target.value)}/>
 
                 <label htmlFor="date-of-birth">Date of Birth</label>
-                <input id="date-of-birth" type="text" value={birth} onChange={(e) => setBirth(e.target.value)}/>
+                <input id="date-of-birth" type="date" value={birth} onChange={(e) => setBirth(e.target.value)}/>
 
                 <label htmlFor="start-date">Start Date</label>
-                <input id="start-date" type="text" value={startDate} onChange={(e) => setStartDate(e.target.value)}/>
+                <input id="start-date" type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)}/>
 
                 <fieldset className="address">
                     <legend>Address</legend>
@@ -99,7 +108,8 @@ function Form() {
                 </fieldset>
 
                 <label htmlFor="department">Department</label>
-                <select name="department" id="department" onChange={({ target: { value } }) => handleChangeDep(value)}>
+                <select name="department" id="department" defaultValue={'DEFAULT'} onChange={({ target: { value } }) => handleChangeDep(value)}>
+                    <option value="DEFAULT" disabled hidden>Choose here</option>
                     <option>Sales</option>
                     <option>Marketing</option>
                     <option>Engineering</option>
@@ -108,6 +118,8 @@ function Form() {
                 </select>
             </form>
             <button onClick={saveEmployee}>Save</button>
+            
+		    {isOpen && <Modal setIsOpen={setIsOpen} />}
         </>
     )
 }
