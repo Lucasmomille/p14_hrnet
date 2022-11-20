@@ -52,7 +52,7 @@ function DataTable(rows) {
 }
 
 function CurrentEmployee() {
-    const { employees, setEmployees } = useContext(EmployeesContext);
+    const { employees } = useContext(EmployeesContext);
     console.log('currentEmployee', employees)
     const rows = [...employees]
     console.log('currentEmployee rows', rows)
