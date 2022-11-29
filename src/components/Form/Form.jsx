@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react'
 import { states } from '../../data/states'
 import EmployeesContext from '../../context/employees';
-
+import Modal from 'p14_convert_jquery_plugin/dist/modal'
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -28,11 +28,11 @@ const SelectForm = ({ values, callback }) => {
       </Box>
     );
 }
-const Modal = ({ setIsOpen }) => {
+/* const Modal = ({ setIsOpen, modalClass = '' }) => {
     return (
       <>
         <div id="confirmation" className="modal">
-          <div className='modal__text'>
+          <div className={`modal__text ${modalClass}`}>
             Employee Created!
             <span className='modal__close' onClick={() => setIsOpen(false)}>
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
@@ -43,7 +43,7 @@ const Modal = ({ setIsOpen }) => {
         </div>
       </>
     );
-  };
+  }; */
 
 function Form() {
     const [firstName, setFirstName] = useState("");
