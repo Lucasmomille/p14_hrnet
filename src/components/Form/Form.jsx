@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react'
 import { states } from '../../data/states'
 import EmployeesContext from '../../context/employees';
-import Modal from 'p14_convert_jquery_plugin/dist/modal'
+import Modal from 'p14_convert_jquery_plugin/dist'
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
