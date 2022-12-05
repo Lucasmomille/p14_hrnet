@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react'
 import { states } from '../../data/states'
 import EmployeesContext from '../../context/employees';
-import Modal from 'p14_convert_jquery_plugin/dist'
+import Modal from 'p14_convert_jquery_plugin'
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -28,22 +28,6 @@ const SelectForm = ({ values, callback }) => {
       </Box>
     );
 }
-/* const Modal = ({ setIsOpen, modalClass = '' }) => {
-    return (
-      <>
-        <div id="confirmation" className="modal">
-          <div className={`modal__text ${modalClass}`}>
-            Employee Created!
-            <span className='modal__close' onClick={() => setIsOpen(false)}>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-          </span>
-          </div>
-        </div>
-      </>
-    );
-  }; */
 
 function Form() {
     const [firstName, setFirstName] = useState("");
@@ -56,6 +40,7 @@ function Form() {
     const [zipCode, setZipCode] = useState("");
     const [state, setState] = useState("");
     const [isOpen, setIsOpen] = useState(false);
+    const [modalText, setModalText] = useState("");
 
     const { employees, setEmployees } = useContext(EmployeesContext);
 
@@ -72,18 +57,22 @@ function Form() {
     }
     const handleChange = (value) => {
         setState(value)
-        console.log('value', value)
     };
     const handleChangeDep = (value) => {
         setDepartment(value)
-        console.log('value', value)
     };
     const saveEmployee = (e) => {
         e.preventDefault();
-        console.log('form', employee)
+        for (const element in employee) {
+          if (employee[element] === "") {
+            setModalText("You need to fill all the form")
+            setIsOpen(true)
+            return
+          }
+        };
         setEmployees([...employees, employee])
+        setModalText("Employee created")
         setIsOpen(true)
-        console.log('employees', employees)
     }
     
     return (
@@ -128,7 +117,7 @@ function Form() {
             </form>
             <button onClick={saveEmployee}>Save</button>
             
-		    {isOpen && <Modal setIsOpen={setIsOpen} />}
+		    {isOpen && <Modal setIsOpen={setIsOpen} modalClass="modal__override" text={modalText} />}
         </>
     )
 }

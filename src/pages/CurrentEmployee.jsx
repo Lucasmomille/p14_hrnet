@@ -37,7 +37,6 @@ const columns = [
 ];
 
 function DataTable(rows) {
-    console.log('in dataTable', rows.rows)
   return (
     <div style={{ height: 400, width: '100%' }}>
       <DataGrid
@@ -53,9 +52,7 @@ function DataTable(rows) {
 
 function CurrentEmployee() {
     const { employees } = useContext(EmployeesContext);
-    console.log('currentEmployee', employees)
     const rows = [...employees]
-    console.log('currentEmployee rows', rows)
     return (
         <div id="employee-div" className="container">
             <h1>Current Employees</h1>
