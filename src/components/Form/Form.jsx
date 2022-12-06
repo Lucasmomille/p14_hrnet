@@ -117,7 +117,7 @@ function Form() {
             </form>
             <button onClick={saveEmployee}>Save</button>
             
-		    {isOpen && <Modal setIsOpen={setIsOpen} modalClass="modal__override" text={modalText} />}
+		    {isOpen && <Modal setIsOpen={setIsOpen} text={modalText} />}
         </>
     )
 }

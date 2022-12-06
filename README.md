@@ -1,5 +1,8 @@
-# Getting Started with Create React App
+# Project 14 for OpenClassroom's frontend developer training
 
-BUILD FOR LIGHTHOUSE
+Clone this repo
 
-MUI pour table données
+Run npm install
+
+Launch npm run start
+
