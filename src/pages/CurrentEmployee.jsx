@@ -41,7 +41,6 @@ function DataTable(rows) {
     <div style={{ height: 400, width: '100%' }}>
       <DataGrid
         rows={rows.rows}
-        getRowId={(r) => r.lastname+Math.random()}
         columns={columns}
         pageSize={5}
         rowsPerPageOptions={[5]}
@@ -52,6 +51,7 @@ function DataTable(rows) {
 
 function CurrentEmployee() {
     const { employees } = useContext(EmployeesContext);
+
     const rows = [...employees]
     return (
         <div id="employee-div" className="container">

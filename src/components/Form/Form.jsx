@@ -39,6 +39,7 @@ function Form() {
     const [city, setCity] = useState("");
     const [zipCode, setZipCode] = useState("");
     const [state, setState] = useState("");
+    const [id, setId] = useState(0);
     const [isOpen, setIsOpen] = useState(false);
     const [modalText, setModalText] = useState("");
 
@@ -53,7 +54,8 @@ function Form() {
         street: street,
         city: city,
         state: state,
-        zipCode: zipCode
+        zipCode: zipCode,
+        id: id
     }
     const handleChange = (value) => {
         setState(value)
@@ -70,6 +72,7 @@ function Form() {
             return
           }
         };
+        setId(id + 1)
         setEmployees([...employees, employee])
         setModalText("Employee created")
         setIsOpen(true)
